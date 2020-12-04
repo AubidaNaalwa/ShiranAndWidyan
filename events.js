@@ -1,11 +1,19 @@
+const model = new Model()
+const view = new View()
+let currentCity 
+let currentPage=1
 $(`#searchBtn`).on("click", function () {
+    currentPage =2
     let city = $(`#citys :selected`).val()
-    
+    $('body').css("background-image",`url("/images/banner1.jpg")`)
+    $('body').css("background-repeat",` no-repeat`)
+    $('body').css("background-size",`cover`)
     $('#firstPage').css("display", "none")
     $('#secondPage').css("display", "block")
 
     let folder = "images/" +city+"/";
     let start = 0;
+    currentCity = city
     $("#imageContainer").empty()
     $.ajax({
         url: folder,
@@ -26,16 +34,22 @@ $(`#searchBtn`).on("click", function () {
         }
     });
 
+    const comments = model.loadComment(city)
+    view.renderComments(comments)
+
 })
 
 
 
 $(`.serv-content`).on("click",".card", function () {
     let city = $(this).data("location")
-    
+    $('body').css("background-image",`url("/images/banner1.jpg")`)
+    $('body').css("background-repeat",` no-repeat`)
+    $('body').css("background-size",`cover`)
+    currentPage =2
     $('#firstPage').css("display", "none")
     $('#secondPage').css("display", "block")
-
+    currentCity = city
     let folder = "images/" +city+"/";
     let start = 0;
     $("#imageContainer").empty()
@@ -58,8 +72,17 @@ $(`.serv-content`).on("click",".card", function () {
         }
     });
 
+    
+    const comments = model.loadComment(city)
+    view.renderComments(comments)
+
 })
 function goBack() {
+    $('body').css("background-image",`none`)
+    $('body').css("background-repeat",` none`)
+    $('body').css("background-size",`none`)
+    currentPage =1
+
     $('#firstPage').css("display", "block")
     $('#secondPage').css("display", "none")
 }
@@ -97,3 +120,13 @@ function sendEmail() {
     }
 	);
 }
+
+$("#insertyComments").on("click","button",function(){
+    const text = $("#commentText").val()
+    if(!text ){
+        return
+    }
+    model.addComment(currentCity,text)
+    view.renderComments(model.loadComment(currentCity))
+    $("#commentText").val("")
+})

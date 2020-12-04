@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אתר חיפוש</title>
+    <title>שורשים</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
@@ -14,7 +15,8 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
-        <script src="https://smtpjs.com/v3/smtp.js"></script>  
+    <script src="https://smtpjs.com/v3/smtp.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 </head>
 
 <body>
@@ -45,7 +47,7 @@
             <div class="max-width">
                 <div class="home-content">
                     <div class="text-1">ברוכים הבאים לאתר שלנו</div>
-                    <div class="text-2">אתר התירות וההיסטוריה</div>
+                    <div class="text-2">שורשים</div>
                     <div class="text-3">בוא נתחיל ב <span class="typing"></span></div>
                     <br>
                     <select name="citys" id="citys">
@@ -64,6 +66,10 @@
         <section class="about" id="about">
             <div class="max-width">
                 <h2 class="title">עלינו</h2>
+                <h2 id="AboutUs">בכל מקום בארץ  קיימים אתרים ומבנים ישנים ומיוחדים שאילו רק יכלו לדבר ולספר את מה שארע בהם או בסביבתם בעבר היינו יושבים מולם במשך שעות ומקשיבים להם בשקיקה.
+                    ודאי נתקלתם במבנה כזה או אחר באזור מגוריכם או כל מקום אחר בארץ, אשר גם לו סיפור מעניין. 
+                    הרגשנו שיש חוסר בתמונות אותנטיות או במאגר שירכז מגוון  תמונות של ערים וכפרים מתקופות שונות לכן ייצרנו בשבילכם אתר חברתי שיתופי לניהול היסטוריה ומידע של כפר/עיר או כל מקום אחר בארץ שמעניין אותכם  שבאמצעותו תוכלו לשתף תמונות עם תיאור שמספק מידע על המקום או על  התקופה ההיסטורית ועל האירועים שקרו בה.
+                    התמונות שאתם משתפים גורמים לאחרים להרגיש נוסטלגיה לעידן ההוא וסקרנות לדעת את פרטי התמונה, ולהשוות  בין העידן שהיה  לעידן שבו אנו חיים.</h2>
                 <div class="about-content">
                     <div class="column left">
 
@@ -179,15 +185,35 @@
             <span>Created By Shiran& Widyan| <span class="far fa-copyright">
         </footer>
     </div>
-    <div id="secondPage">
-        <button onclick="goBack()">Go Back</button>
-        <div id="imageContainer">
 
-            
+    
+    
+    <script id="comments-template" type="text/x-handlebars-template">
+        <ul>
+          {{#each comments}}
+            <div class="comment">
+                {{this}}
+            </div>
+          {{/each}}
+        </ul>
+      </script>
+      
+
+    <div id="secondPage">
+        <i class="fa fa-home" id="home" onclick="goBack()"></i>
+        <div id="imageContainer">    
+        </div>
+        <div id="insertyComments">
+            <input id="commentText" type="text">
+            <button id="commentbtn">comment</button>
+        </div>
+        <div id="commentContainer">
+
         </div>
     </div>
 
-
+    <script src="View.js"></script>
+    <script src="model.js"></script>
     <script src="script.js"></script>
     <script src="events.js"></script>
 
