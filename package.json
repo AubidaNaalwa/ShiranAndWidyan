@@ -1,0 +1,30 @@
+{
+  "name": "shiranandwidyan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AubidaNaalwa/ShiranAndWidyan.git"
+  },
+  
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AubidaNaalwa/ShiranAndWidyan/issues"
+  },
+
+  "homepage": "https://github.com/AubidaNaalwa/ShiranAndWidyan#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8"
+  },
+
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+
+}
